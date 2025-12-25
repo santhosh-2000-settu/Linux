@@ -18,49 +18,49 @@ Install package:
 
 \# yum install postfix
 
-![](media/image1.tmp){width="6.268055555555556in"
+![](images/media/image1.tmp){width="6.268055555555556in"
 height="3.259027777777778in"}
 
 Start and enable Postfix so it runs after a reboot:
 
 \# systemctl enable \--now postfix.service
 
-![](media/image2.tmp){width="6.268055555555556in"
+![](images/media/image2.tmp){width="6.268055555555556in"
 height="0.26319444444444445in"}
 
 Edit configuration file:
 
 #vi /etc/postfix/main.cf
 
-![](media/image3.tmp){width="1.8125929571303587in"
+![](images/media/image3.tmp){width="1.8125929571303587in"
 height="0.2569575678040245in"}
 
 Restart the service
 
 \# systemctl restart postfix.service
 
-![](media/image4.tmp){width="4.277997594050744in"
+![](images/media/image4.tmp){width="4.277997594050744in"
 height="0.2708475503062117in"}
 
 Create a user
 
 \# useradd mailuser
 
-![](media/image5.tmp){width="2.8195898950131233in"
+![](images/media/image5.tmp){width="2.8195898950131233in"
 height="0.2708475503062117in"}
 
 Sending mail to a user:
 
 \# mail -s \"Test Email\" mail@localhost
 
-![](media/image6.tmp){width="6.268055555555556in"
+![](images/media/image6.tmp){width="6.268055555555556in"
 height="1.4784722222222222in"}
 
 To check logs of mail:
 
 \# tail /var/log/maillog
 
-![](media/image7.png){width="6.268055555555556in"
+![](images/media/image7.png){width="6.268055555555556in"
 height="1.2020833333333334in"}
 
 Check mail is send to another user:
@@ -69,31 +69,31 @@ Check mail is send to another user:
 
 \# mail
 
-![](media/image8.tmp){width="5.78501968503937in"
+![](images/media/image8.tmp){width="5.78501968503937in"
 height="4.583568460192476in"}
 
 Create one user and add multiple users in config file:
 
 \# vi /etc/ aliases
 
-![](media/image9.tmp){width="2.5348523622047243in"
+![](images/media/image9.tmp){width="2.5348523622047243in"
 height="0.2916819772528434in"}
 
 Save the file and update aliases:
 
 \# newaliases
 
-![](media/image10.tmp){width="2.3473425196850393in"
+![](images/media/image10.tmp){width="2.3473425196850393in"
 height="0.4027985564304462in"}
 
 Send mail to a group:
 
 \# mail -s "subject" groupname
 
-![](media/image11.tmp){width="4.354390857392826in"
+![](images/media/image11.tmp){width="4.354390857392826in"
 height="1.9306550743657043in"}
 
 Check mail is send to 2 users:
 
-![](media/image12.tmp){width="6.268055555555556in"
+![](images/media/image12.tmp){width="6.268055555555556in"
 height="1.3604166666666666in"}

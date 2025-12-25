@@ -29,11 +29,12 @@ Command:
 
 yum install bind bind-utils
 
-![](media/image1.tmp){width="6.0in" height="1.2118055555555556in"}
+![](images/media/image1.tmp){width="6.0in"
+height="1.2118055555555556in"}
 
 Enable the service after installing
 
-![](media/image2.tmp){width="3.4862904636920384in"
+![](images/media/image2.tmp){width="3.4862904636920384in"
 height="0.39585411198600173in"}
 
 ## Step 2: Modify /etc/named.conf file
@@ -44,17 +45,17 @@ You remove unnecessary lines from logging to root.key to keep the file
 clean.
 
 ![A screen shot of a computer code AI-generated content may be
-incorrect.](media/image3.tmp){width="4.791666666666667in"
+incorrect.](images/media/image3.tmp){width="4.791666666666667in"
 height="3.066666666666667in"}
 
 Command:
 
 vim /etc/named.conf
 
-![](media/image4.tmp){width="3.1321052055993in"
+![](images/media/image4.tmp){width="3.1321052055993in"
 height="0.24306758530183728in"}
 
-![](media/image5.tmp){width="6.0in" height="4.094444444444444in"}
+![](images/media/image5.tmp){width="6.0in" height="4.094444444444444in"}
 
 ## Step 3: Append rfc1912 zones file
 
@@ -66,7 +67,7 @@ Command:
 
 cat /etc/named.rfc1912.zones \>\> /etc/named.conf
 
-![](media/image6.tmp){width="5.396111111111111in"
+![](images/media/image6.tmp){width="5.396111111111111in"
 height="0.38890857392825895in"}
 
 • The file /etc/named.rfc1912.zones contains predefined zone
@@ -89,7 +90,7 @@ You configure:
 
 \- Create a custom zone called glotech.com
 
-![](media/image7.tmp){width="3.041823053368329in"
+![](images/media/image7.tmp){width="3.041823053368329in"
 height="0.36112970253718285in"}
 
 Configuration added:
@@ -102,7 +103,7 @@ allow-query { localhost; any; };
 
 };
 
-![](media/image8.tmp){width="5.507227690288714in"
+![](images/media/image8.tmp){width="5.507227690288714in"
 height="1.9237095363079615in"}
 
 zone \"glotech.com\" IN {
@@ -113,7 +114,7 @@ file \"forward_zone\";
 
 };
 
-![](media/image9.tmp){width="2.77792104111986in"
+![](images/media/image9.tmp){width="2.77792104111986in"
 height="1.027830271216098in"}
 
 ## Step 5: Create forward zone file
@@ -128,7 +129,7 @@ cd /var/named
 
 cp named.localhost forward_zone
 
-![](media/image10.tmp){width="4.368279746281715in"
+![](images/media/image10.tmp){width="4.368279746281715in"
 height="0.39585411198600173in"}
 
 ## Step 6: Change ownership of the zone file
@@ -141,14 +142,14 @@ Command:
 
 chown named:named forward_zone
 
-![](media/image11.tmp){width="5.166932414698163in"
+![](images/media/image11.tmp){width="5.166932414698163in"
 height="4.187715441819773in"}
 
 ## Step 7: Modify forward_zone file
 
 DNS records are added for the domain and hostnames.
 
-![](media/image12.tmp){width="3.1876640419947506in"
+![](images/media/image12.tmp){width="3.1876640419947506in"
 height="0.34723972003499565in"}
 
 Example records:
@@ -161,7 +162,7 @@ client IN A 192.168.44.11
 
 \...
 
-![](media/image13.tmp){width="4.9655325896762905in"
+![](images/media/image13.tmp){width="4.9655325896762905in"
 height="1.8820406824146982in"}
 
 SOA and NS records define the authority and the nameserver for the zone.
@@ -170,7 +171,7 @@ SOA and NS records define the authority and the nameserver for the zone.
 
 This configures the system to use the newly created DNS server.
 
-![](media/image14.tmp){width="3.5487937445319333in"
+![](images/media/image14.tmp){width="3.5487937445319333in"
 height="0.19445428696412947in"}
 
 Content:
@@ -179,7 +180,7 @@ search glotech.com
 
 nameserver 192.168.44.10
 
-![](media/image15.tmp){width="2.7084722222222224in"
+![](images/media/image15.tmp){width="2.7084722222222224in"
 height="0.7083694225721785in"}
 
 ## Step 9: Restart DNS service
@@ -192,10 +193,10 @@ systemctl restart named
 
 systemctl enable named
 
-![](media/image16.tmp){width="3.319615048118985in"
+![](images/media/image16.tmp){width="3.319615048118985in"
 height="0.22917869641294839in"}
 
-![](media/image17.tmp){width="3.4376771653543305in"
+![](images/media/image17.tmp){width="3.4376771653543305in"
 height="0.16667541557305338in"}
 
 ## Step 10: Client-side configuration
@@ -203,7 +204,7 @@ height="0.16667541557305338in"}
 Each client must point to the new DNS server by updating
 /etc/resolv.conf.
 
-![](media/image18.tmp){width="3.25711176727909in"
+![](images/media/image18.tmp){width="3.25711176727909in"
 height="0.2847364391951006in"}
 
 Content:
@@ -212,7 +213,7 @@ search glotech.com
 
 nameserver 192.168.44.10
 
-![](media/image19.tmp){width="3.1529396325459316in"
+![](images/media/image19.tmp){width="3.1529396325459316in"
 height="0.7639282589676291in"}
 
 ## Validation
@@ -225,14 +226,15 @@ host glotech.com
 
 nslookup glotech.com
 
-![](media/image20.tmp){width="4.687740594925634in"
+![](images/media/image20.tmp){width="4.687740594925634in"
 height="1.9375995188101487in"}
 
 Client side output:
 
-![](media/image21.tmp){width="6.0in" height="3.259027777777778in"}
+![](images/media/image21.tmp){width="6.0in"
+height="3.259027777777778in"}
 
-![](media/image22.tmp){width="3.312670603674541in"
+![](images/media/image22.tmp){width="3.312670603674541in"
 height="1.6459175415573053in"}
 
 If results show the correct IPs, DNS is workin
